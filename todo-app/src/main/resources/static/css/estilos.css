@@ -1,0 +1,24 @@
+:root { --azul: #235e91; --linea: #d7e0e8; --fondo: #f5f7f9; --texto: #233548; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; color: var(--texto); background: var(--fondo); }
+main { max-width: 680px; margin: 32px auto; padding: 28px 32px; background: #fff; border: 1px solid var(--linea); }
+h1 { margin: 0 0 4px; font-size: 1.6rem; color: var(--azul); }
+.resumen { margin: 0 0 20px; color: #637487; }
+.aviso { padding: 8px 12px; background: #e8f4ea; border: 1px solid #9fcfa8; }
+.nueva { display: grid; gap: 6px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--linea); }
+.nueva label { font-weight: 600; font-size: .9rem; }
+input[type=text], textarea { width: 100%; padding: 8px 10px; font: inherit; border: 1px solid #b9c7d3; }
+button { padding: 7px 14px; font: inherit; color: #fff; background: var(--azul); border: 0; cursor: pointer; }
+button:hover { background: #1c4d78; }
+button.peligro { background: #b4443c; }
+.nueva button { justify-self: start; margin-top: 4px; }
+.error { margin: 0; color: #b4443c; font-size: .9rem; }
+.vacio { color: #637487; }
+.lista { margin: 0; padding: 0; list-style: none; }
+.lista li { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--linea); }
+.texto { display: grid; gap: 2px; }
+.texto small { color: #637487; }
+.acciones { display: flex; gap: 8px; }
+.acciones form { margin: 0; }
+li.hecha .texto strong, li.hecha .texto span { text-decoration: line-through; color: #8a98a6; }
+a { color: var(--azul); }

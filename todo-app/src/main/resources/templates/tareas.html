@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO · Tareas</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main>
+    <h1>Mis tareas</h1>
+    <p class="resumen">
+        <span th:text="${pendientes}">0</span> pendientes
+        · <span th:text="${#lists.size(tareas)}">0</span> en total
+    </p>
+
+    <p class="aviso" th:if="${mensaje}" th:text="${mensaje}"></p>
+
+    <form th:action="@{/tareas}" th:object="${nuevaTarea}" method="post" class="nueva">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" th:field="*{titulo}" maxlength="120" placeholder="¿Qué hay que hacer?">
+        <p class="error" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></p>
+
+        <label for="descripcion">Descripción (opcional)</label>
+        <textarea id="descripcion" th:field="*{descripcion}" rows="2" maxlength="500"></textarea>
+        <p class="error" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></p>
+
+        <button type="submit">Añadir tarea</button>
+    </form>
+
+    <p class="vacio" th:if="${#lists.isEmpty(tareas)}">No hay tareas todavía.</p>
+
+    <ul class="lista">
+        <li th:each="t : ${tareas}" th:classappend="${t.completada} ? 'hecha'">
+            <div class="texto">
+                <strong th:text="${t.titulo}">Título</strong>
+                <span th:if="${t.descripcion}" th:text="${t.descripcion}">Descripción</span>
+                <small th:text="${t.fechaFormateada}">fecha</small>
+            </div>
+            <div class="acciones">
+                <form th:action="@{/tareas/{id}/completar(id=${t.id})}" method="post">
+                    <button type="submit" th:text="${t.completada} ? 'Reabrir' : 'Completar'">Completar</button>
+                </form>
+                <form th:action="@{/tareas/{id}/eliminar(id=${t.id})}" method="post">
+                    <button type="submit" class="peligro">Eliminar</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

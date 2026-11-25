@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO · Error</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main>
+    <h1>No se ha podido completar la operación</h1>
+    <p th:text="${mensaje} ?: 'Ha ocurrido un error inesperado.'">Mensaje</p>
+    <p><a th:href="@{/tareas}">Volver a la lista de tareas</a></p>
+</main>
+</body>
+</html>
